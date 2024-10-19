@@ -1,0 +1,77 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34; /* Color de fondo */
+    min-height: 100vh; /* Altura mínima */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    font-size: calc(10px + 2vmin);
+    color: white; /* Color de texto */
+    padding: 20px; /* Agregar espacio alrededor del contenido */
+}
+
+h1 {
+    font-size: 2.5em; /* Tamaño del título */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos del formulario en columna */
+    width: 300px; /* Ancho del formulario */
+    margin: auto; /* Centra el formulario */
+}
+
+label {
+    margin-bottom: 5px; /* Espacio debajo de las etiquetas */
+    font-weight: bold; /* Negrita para las etiquetas */
+}
+
+input {
+    margin-bottom: 15px; /* Espacio debajo de los campos de entrada */
+    padding: 10px; /* Espacio interior en los campos de entrada */
+    border: 1px solid #ccc; /* Borde de los campos */
+    border-radius: 5px; /* Esquinas redondeadas */
+}
+
+button {
+    padding: 10px; /* Espacio interior en el botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Esquinas redondeadas */
+    background-color: #61dafb; /* Color de fondo del botón */
+    color: white; /* Color de texto del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+    button:hover {
+        background-color: #4a94c8; /* Color de fondo del botón al pasar el ratón */
+    }
+
+.App-link {
+    color: #61dafb; /* Color del enlace */
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

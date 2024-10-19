@@ -1,0 +1,62 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1508107536691-b1449928187d?q=80&w=1882&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Asegúrate de reemplazar esta URL con la dirección de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+}
+
+.registration-form-container {
+    max-width: 600px; /* Aumentar aún más el ancho máximo */
+    margin: 0 auto;
+    padding: 40px; /* Aumentar el padding para más espacio interno */
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bordes más redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad para ver la imagen detrás */
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px; /* Mantener tamaño de fuente */
+    color: #4A4A4A; /* Color de texto más oscuro */
+}
+
+.form-input, .form-select {
+    width: 100%;
+    padding: 12px; /* Mantener el padding */
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s; /* Transición suave al enfocar */
+}
+
+    .form-input:focus, .form-select:focus {
+        border-color: #007BFF; /* Color azul al enfocar */
+        outline: none; /* Sin contorno predeterminado */
+    }
+
+.form-button {
+    width: 100%;
+    padding: 12px; /* Mantener el padding */
+    background-color: #28a745; /* Color verde para el botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Mantener tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+    .form-button:hover {
+        background-color: #218838; /* Verde más oscuro al pasar el mouse */
+    }
+
+.error-message {
+    color: #dc3545; /* Color rojo para el mensaje de error */
+    text-align: center;
+    margin: 10px 0;
+}
