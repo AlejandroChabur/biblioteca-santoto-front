@@ -1,0 +1,57 @@
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.table-container {
+    width: 80%; /* Ajusta el ancho según tus necesidades */
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left; /* Cambia a 'center' si prefieres centrar el texto */
+}
+
+th {
+    background-color: #4CAF50; /* Color de fondo para el encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #ddd; /* Color de fondo al pasar el ratón sobre una fila */
+}
+
+.error-message {
+    color: red; /* Color para mensajes de error */
+}
+
+/* Estilos para formularios */
+form {
+    margin-top: 20px;
+}
+
+input[type='text'] {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #4CAF50; /* Color del botón */
+    color: white; /* Color del texto del botón */
+    border: none;
+}
