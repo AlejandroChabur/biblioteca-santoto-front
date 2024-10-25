@@ -1,0 +1,57 @@
+/* src/components/Catalogo.css */
+
+.catalogo-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.book-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-item {
+    background-color: #ecf0f1; /* Fondo suave */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    width: 80%; /* Ancho del libro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+    .book-item h3 {
+        margin: 0; /* Elimina margen superior */
+    }
+
+    .book-item p {
+        margin: 5px 0; /* Espaciado entre párrafos */
+    }
+
+.read-button, .delete-button {
+    margin-top: 10px; /* Espacio entre el texto y los botones */
+    padding: 10px 15px; /* Espaciado del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efecto de transición */
+}
+
+.read-button {
+    background-color: #3498db; /* Color del botón de leer */
+    color: white;
+}
+
+    .read-button:hover {
+        background-color: #2980b9; /* Color del botón al pasar el mouse */
+    }
+
+.delete-button {
+    background-color: #e74c3c; /* Color del botón de eliminar */
+    color: white;
+    margin-left: 10px; /* Espacio entre botones */
+}
+
+    .delete-button:hover {
+        background-color: #c0392b; /* Color del botón al pasar el mouse */
+    }

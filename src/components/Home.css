@@ -1,0 +1,80 @@
+/* src/components/Home.css */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f0f8ff; /* Color de fondo suave */
+    min-height: 100vh; /* Ocupa toda la altura de la vista */
+}
+
+.home-title {
+    font-size: 2.5rem;
+    color: #2c3e50; /* Color del texto */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.home-description {
+    font-size: 1.25rem;
+    color: #34495e; /* Color del texto */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Espaciado arriba y abajo */
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #2980b9; /* Color del borde */
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 300px; /* Ancho del campo de búsqueda */
+    margin-right: 10px; /* Espacio entre el input y el botón */
+}
+
+.search-button {
+    background-color: #3498db; /* Color del botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efecto de transición */
+}
+
+    .search-button:hover {
+        background-color: #2980b9; /* Color del botón al pasar el mouse */
+    }
+
+.news-section, .info-section {
+    background-color: #ecf0f1; /* Fondo para las secciones */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 80%; /* Ancho de las secciones */
+    margin-bottom: 20px; /* Espacio entre secciones */
+}
+
+    .news-section h2, .info-section h2 {
+        color: #2980b9; /* Color de los títulos de las secciones */
+    }
+
+.news-item {
+    margin: 15px 0; /* Espaciado entre noticias */
+}
+
+    .news-item h3 {
+        margin: 5px 0; /* Espaciado entre título y contenido de la noticia */
+    }
+
+    .news-item p {
+        margin: 0; /* Elimina el margen en los párrafos de noticias */
+    }
