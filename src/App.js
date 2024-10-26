@@ -7,7 +7,6 @@ import LoginForm from "./components/LoginScreens/LoginForm"; // Formulario de re
 import PrivateRoute from "./components/routing/PrivateRoute"; // Asegúrate de que este componente esté correctamente implementado
 import StudentDashboard from './components/StudentDashboard';
 import AdminDashboard from "./components/AdminDashBoard";
-
 const App = () => {
     return (
         <div className="app">
