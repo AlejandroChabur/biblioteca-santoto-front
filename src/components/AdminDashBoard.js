@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import booksService from "../services/booksService"; // Asegúrate de que la ruta sea correcta
-import peopleService from "../services/peopleService"; // Asegúrate de que la ruta sea correcta
+import booksService from "../services/booksService"; 
+import peopleService from "../services/peopleService"; 
 import BookForm from './BookForm';
 import BookTable from './BookTable';
 import PeopleForm from './PeopleForm';
@@ -13,9 +13,8 @@ import './AdminDashBoard.css';
 const AdminDashboard = () => {
     const [books, setBooks] = useState([]);
     const [people, setPeople] = useState([]);
-    const [activeTab, setActiveTab] = useState('books'); // Estado para controlar la pestaña activa
-
-    // Estado para libros
+    const [activeTab, setActiveTab] = useState('books'); 
+   
     const [newBook, setNewBook] = useState({
         title: '',
         code: '',
@@ -34,28 +33,27 @@ const AdminDashboard = () => {
     });
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-    // Estado para personas
     const [newPerson, setNewPerson] = useState({
-        idIdentificationType: 0, // Agregar este campo
+        idIdentificationType: 0,
         identificationNumber: '',
         firstName: '',
         middleName: '',
         lastName: '',
         secondLastName: '',
         address: '',
-        borndate: '' // Este se mantendrá como una cadena para el campo de fecha
+        borndate: '' 
     });
     const [editPersonId, setEditPersonId] = useState(null);
     const [editPersonData, setEditPersonData] = useState({
         id: null,
-        idIdentificationType: 0, // Agregar este campo
+        idIdentificationType: 0, 
         identificationNumber: '',
         firstName: '',
         middleName: '',
         lastName: '',
         secondLastName: '',
         address: '',
-        borndate: '' // Este se mantendrá como una cadena para el campo de fecha
+        borndate: '' 
     });
     const [isEditPersonModalOpen, setIsEditPersonModalOpen] = useState(false);
 
@@ -143,27 +141,27 @@ const AdminDashboard = () => {
         e.preventDefault();
 
         const personData = {
-            id: 0, // Si tu API espera un ID, puedes establecerlo en 0 o omitirlo
-            idIdentificationType: Number(newPerson.idIdentificationType), // Asegúrate de que sea un número
+            id: 0,
+            idIdentificationType: Number(newPerson.idIdentificationType), 
             identificationNumber: newPerson.identificationNumber,
             firstName: newPerson.firstName,
             middleName: newPerson.middleName,
             lastName: newPerson.lastName,
             secondLastName: newPerson.secondLastName,
             address: newPerson.address,
-            borndate: newPerson.borndate, // Verifica que el formato sea correcto
+            borndate: newPerson.borndate, 
             identificationTypes: {
-                id: Number(newPerson.idIdentificationType), // El ID debe coincidir
-                name: "Cedula", // Cambia esto si necesitas otro nombre dinámico
-                isDelete: false // Asegúrate de que sea el valor correcto
+                id: Number(newPerson.idIdentificationType), 
+                name: "Cedula", 
+                isDelete: false 
             },
-            isDelete: false // Para indicar que no está eliminado
+            isDelete: false 
         };
 
-        console.log("Datos a enviar:", personData); // Para verificar los datos que se enviarán
+        console.log("Datos a enviar:", personData); 
         try {
             await peopleService.CreatePerson(personData);
-            fetchPeople(); // Recargar la lista de personas
+            fetchPeople(); 
             setNewPerson({
                 idIdentificationType: 0,
                 identificationNumber: '',
@@ -216,7 +214,7 @@ const AdminDashboard = () => {
         }
     };
     const AdminDashboard = () => {
-        const [activeSection, setActiveSection] = useState('books'); // Puedes cambiar 'books' a la sección que desees mostrar por defecto
+        const [activeSection, setActiveSection] = useState('books');
 
         return (
             <div className="admin-dashboard">
@@ -229,9 +227,9 @@ const AdminDashboard = () => {
                     </nav>
                 </header>
 
-                {activeSection === 'books' && <BookTable />}  {/* Componente para mostrar los libros */}
-                {activeSection === 'people' && <PeopleTable />}  {/* Componente para mostrar personas */}
-                {activeSection === 'register' && <LoginForm />}  {/* Componente para registrar usuarios */}
+                {activeSection === 'books' && <BookTable />} 
+                {activeSection === 'people' && <PeopleTable />}
+                {activeSection === 'register' && <LoginForm />} 
             </div>
         );
     };
@@ -241,7 +239,7 @@ const AdminDashboard = () => {
         <div className="admin-dashboard">
             <h1>Gestión Administrativa</h1>
 
-            {/* Pestañas para alternar entre Libros y Personas */}
+           
             <div className="tabs">
                 <button onClick={() => setActiveTab('books')} className={activeTab === 'books' ? 'active' : ''}>Libros</button>
                 <button onClick={() => setActiveTab('people')} className={activeTab === 'people' ? 'active' : ''}>Personas</button>
@@ -308,7 +306,7 @@ const AdminDashboard = () => {
                                     <input type="text" placeholder="Apellido" value={editPersonData.lastName} onChange={(e) => setEditPersonData({ ...editPersonData, lastName: e.target.value })} required />
                                     <input type="text" placeholder="Segundo Apellido" value={editPersonData.secondLastName} onChange={(e) => setEditPersonData({ ...editPersonData, secondLastName: e.target.value })} />
                                     <input type="text" placeholder="Dirección" value={editPersonData.address} onChange={(e) => setEditPersonData({ ...editPersonData, address: e.target.value })} required />
-                                    <input type="date" placeholder="Fecha de Nacimiento" value={editPersonData.borndate} onChange={(e) => setEditPersonData({ ...editPersonData, borndate: e.target.value })} required /> {/* Campo de fecha simple */}
+                                    <input type="date" placeholder="Fecha de Nacimiento" value={editPersonData.borndate} onChange={(e) => setEditPersonData({ ...editPersonData, borndate: e.target.value })} required />
                                     <button type="submit">Actualizar Persona</button>
                                 </form>
                             </div>
