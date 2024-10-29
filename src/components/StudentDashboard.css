@@ -1,12 +1,81 @@
+/* Reiniciar el margen y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo blanco total para el Student Dashboard */
 .student-dashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Centra verticalmente */
     padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+    background-color: #ffffff; /* Fondo blanco */
 }
 
+/* Encabezado (barra de navegación) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Fondo claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-left button,
+.nav-right button {
+    background: none;
+    border: none;
+    color: #4CAF50; /* Color de texto en modo claro */
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+    .nav-left button:hover,
+    .nav-right button:hover {
+        background-color: #4CAF50; /* Fondo al pasar el mouse */
+        color: #fff; /* Texto blanco al pasar el mouse */
+        border-radius: 5px;
+    }
+
+.nav-right span {
+    color: #333; /* Color de texto */
+    font-weight: bold;
+}
+
+/* Sección de Filtros */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+    .filters input {
+        padding: 8px 12px;
+        border: 1px solid #ddd; /* Borde claro */
+        border-radius: 5px;
+        font-size: 16px;
+        width: 200px;
+        transition: border-color 0.3s;
+    }
+
+        .filters input:focus {
+            border-color: #4CAF50; /* Borde al enfocar */
+            outline: none;
+        }
+
+/* Tabla */
 .table-container {
-    width: 80%; /* Ajusta el ancho según tus necesidades */
+    width: 80%;
     margin-top: 20px;
 }
 
@@ -17,24 +86,64 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; /* Borde claro */
     padding: 12px;
-    text-align: left; /* Cambia a 'center' si prefieres centrar el texto */
+    text-align: left;
 }
 
 th {
-    background-color: #4CAF50; /* Color de fondo para el encabezado */
-    color: white; /* Color del texto del encabezado */
+    background-color: #4CAF50; /* Fondo de encabezado */
+    color: white; /* Texto de encabezado */
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2; /* Color de fondo para filas pares */
+    background-color: #f9f9f9; /* Color de filas pares */
 }
 
 tr:hover {
-    background-color: #ddd; /* Color de fondo al pasar el ratón sobre una fila */
+    background-color: #e0f7fa; /* Color de fila al pasar el mouse */
 }
 
+/* Mensajes de error */
 .error-message {
-    color: red; /* Color para mensajes de error */
+    color: red; /* Color de error */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Estilos para el tema oscuro */
+.dark-mode .student-dashboard {
+    background-color: #222; /* Fondo del panel de estudiante oscuro */
+}
+
+.dark-mode header {
+    background-color: #333; /* Fondo de encabezado oscuro */
+}
+
+.dark-mode .nav-left button,
+.dark-mode .nav-right button {
+    color: #80c745; /* Color de texto en botones oscuros */
+}
+
+.dark-mode th {
+    background-color: #444; /* Fondo de encabezado de tabla oscuro */
+    color: #fff; /* Texto claro en encabezado */
+}
+
+.dark-mode td {
+    background-color: #333; /* Fondo de celdas oscuro */
+    color: #fff; /* Texto claro en celdas */
+}
+
+.dark-mode tr:nth-child(even) {
+    background-color: #444; /* Color de filas pares oscuro */
+}
+
+.dark-mode tr:hover {
+    background-color: #555; /* Color de fila al pasar el mouse */
+}
+
+.dark-mode {
+    background-color: #111; /* Fondo general oscuro */
+    color: #fff; /* Texto claro */
 }
