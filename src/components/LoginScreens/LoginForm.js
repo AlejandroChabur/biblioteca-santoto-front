@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';  // Asegúrate de tener axios instalado
-
+import './LoginForm.css';
 function RegistrationForm() {
     const [name, setName] = useState('');  // Solicita solo el nombre
     const [email,setEmail]= useState('');
