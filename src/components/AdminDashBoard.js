@@ -1,26 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import booksService from "../services/booksService";
+import booksService from "../services/booksService"; // Asegúrate de que la ruta sea correcta
+import BookForm from './BookForm';
+import BookTable from './BookTable';
 import './AdminDashBoard.css';
 
 const AdminDashboard = () => {
     const [books, setBooks] = useState([]);
-    const [newBook, setNewBook] = useState({
-        title: '',
-        code: '',
-        publicationYear: '',
-        idEdition: 0,
-        edition: { id: 0, editionName: '', isDelete: false }
-    });
-    const [editBookId, setEditBookId] = useState(null);
-    const [editBookData, setEditBookData] = useState({
-        id: null,
-        title: '',
-        code: '',
-        publicationYear: '',
-        idEdition: 0,
-        edition: { id: 0, editionName: '', isDelete: false }
-    });
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [editBook, setEditBook] = useState(null); // Cambiado de editBookId a editBook para almacenar el libro completo
 
     useEffect(() => {
         fetchBooks();
@@ -36,31 +22,21 @@ const AdminDashboard = () => {
         }
     };
 
-    const handleAddBook = async (e) => {
-        e.preventDefault();
+    const handleAddBook = async (newBook) => {
         try {
             await booksService.CreateBook(newBook);
             fetchBooks();
-            setNewBook({
-                title: '',
-                code: '',
-                publicationYear: '',
-                idEdition: 0,
-                edition: { id: 0, editionName: '', isDelete: false }
-            });
         } catch (error) {
             console.error("Error adding book:", error);
             alert("Error al agregar el libro.");
         }
     };
 
-    const handleEditBook = async (e) => {
-        e.preventDefault();
-        const bookData = { ...editBookData, isDelete: false };
+    const handleEditBook = async (updatedBook) => {
         try {
-            await booksService.UpdateBook(editBookId, bookData);
+            await booksService.UpdateBook(editBook.id, updatedBook);
             fetchBooks();
-            setIsEditModalOpen(false);
+            setEditBook(null); // Cierra el modal al terminar de editar
         } catch (error) {
             console.error("Error updating book:", error);
             alert("Error al actualizar el libro.");
@@ -68,8 +44,7 @@ const AdminDashboard = () => {
     };
 
     const handleDeleteBook = async (bookId) => {
-        const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este libro?");
-        if (confirmDelete) {
+        if (window.confirm("¿Estás seguro de que deseas eliminar este libro?")) {
             try {
                 await booksService.DeleteBook(bookId);
                 fetchBooks();
@@ -81,71 +56,26 @@ const AdminDashboard = () => {
     };
 
     const openEditModal = (book) => {
-        setEditBookId(book.id);
-        setEditBookData(book);
-        setIsEditModalOpen(true);
-    };
-
-    const closeEditModal = () => {
-        setIsEditModalOpen(false);
+        setEditBook(book);
     };
 
     return (
         <div className="admin-dashboard">
-            <div className="navbar">
-                <a href="#">Gestionar Libros</a>
-                <a href="#">Agregar Libro</a>
-            </div>
-
             <h1>Gestión de Libros</h1>
 
-            <form onSubmit={handleAddBook}>
-                <input type="text" placeholder="Título" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })} required />
-                <input type="number" placeholder="ID de Edición" value={newBook.idEdition} onChange={(e) => setNewBook({ ...newBook, idEdition: Number(e.target.value) })} required />
-                <input type="text" placeholder="Código" value={newBook.code} onChange={(e) => setNewBook({ ...newBook, code: e.target.value })} required />
-                <input type="text" placeholder="Año de Publicación" value={newBook.publicationYear} onChange={(e) => setNewBook({ ...newBook, publicationYear: e.target.value })} required />
-                <button type="submit">Agregar Libro</button>
-            </form>
+            {/* Formulario para agregar nuevos libros */}
+            <BookForm onSubmit={handleAddBook} initialData={{ title: '', code: '', publicationYear: '', idEdition: 0 }} />
 
-            <div className="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Edición</th>
-                            <th>Código</th>
-                            <th>Año de Publicación</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {books.map(book => (
-                            <tr key={book.id}>
-                                <td>{book.title}</td>
-                                <td>{book.edition?.editionName || 'N/A'}</td>
-                                <td>{book.code}</td>
-                                <td>{book.publicationYear}</td>
-                                <td className="button-container">
-                                    <button className="edit-button" onClick={() => openEditModal(book)}>Editar</button>
-                                    <button className="delete-button" onClick={() => handleDeleteBook(book.id)}>Eliminar</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            {/* Tabla para mostrar los libros */}
+            <BookTable books={books} onEdit={openEditModal} onDelete={handleDeleteBook} />
 
-            {isEditModalOpen && (
-                <div className="modal" style={{ display: 'block' }}>
+            {/* Modal o formulario para editar libros */}
+            {editBook && (
+                <div className="modal">
                     <div className="modal-content">
-                        <span className="close" onClick={closeEditModal}>&times;</span>
                         <h2>Editar Libro</h2>
-                        <form onSubmit={handleEditBook}>
-                            <input type="text" placeholder="Título" value={editBookData.title} onChange={(e) => setEditBookData({ ...editBookData, title: e.target.value })} required />
-                            <input type="text" placeholder="Código" value={editBookData.code} onChange={(e) => setEditBookData({ ...editBookData, code: e.target.value })} required />
-                            <input type="text" placeholder="Año de Publicación" value={editBookData.publicationYear} onChange={(e) => setEditBookData({ ...editBookData, publicationYear: e.target.value })} required />
-                            <button type="submit">Guardar Cambios</button>
-                        </form>
+                        <BookForm onSubmit={handleEditBook} initialData={editBook} isEdit />
+                        <button onClick={() => setEditBook(null)}>Cerrar</button>
                     </div>
                 </div>
             )}
