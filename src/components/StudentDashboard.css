@@ -1,31 +1,28 @@
-/* Reiniciar el margen y padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Fondo blanco total para el Student Dashboard */
 .student-dashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centra verticalmente */
+    justify-content: center;
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #333;
-    height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
-    background-color: #ffffff; /* Fondo blanco */
+    height: 100vh;
+    background-color: #ffffff;
 }
 
-/* Encabezado (barra de navegación) */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 10px 20px;
-    background-color: #ffffff; /* Fondo claro */
+    background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -33,7 +30,7 @@ header {
 .nav-right button {
     background: none;
     border: none;
-    color: #4CAF50; /* Color de texto en modo claro */
+    color: #4CAF50;
     font-size: 16px;
     cursor: pointer;
     padding: 8px 12px;
@@ -42,17 +39,16 @@ header {
 
     .nav-left button:hover,
     .nav-right button:hover {
-        background-color: #4CAF50; /* Fondo al pasar el mouse */
-        color: #fff; /* Texto blanco al pasar el mouse */
+        background-color: #4CAF50;
+        color: #fff;
         border-radius: 5px;
     }
 
 .nav-right span {
-    color: #333; /* Color de texto */
+    color: #333;
     font-weight: bold;
 }
 
-/* Sección de Filtros */
 .filters {
     display: flex;
     gap: 10px;
@@ -61,7 +57,7 @@ header {
 
     .filters input {
         padding: 8px 12px;
-        border: 1px solid #ddd; /* Borde claro */
+        border: 1px solid #ddd;
         border-radius: 5px;
         font-size: 16px;
         width: 200px;
@@ -69,11 +65,10 @@ header {
     }
 
         .filters input:focus {
-            border-color: #4CAF50; /* Borde al enfocar */
+            border-color: #4CAF50;
             outline: none;
         }
 
-/* Tabla */
 .table-container {
     width: 80%;
     margin-top: 20px;
@@ -86,64 +81,62 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd; /* Borde claro */
+    border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
 
 th {
-    background-color: #4CAF50; /* Fondo de encabezado */
-    color: white; /* Texto de encabezado */
+    background-color: #4CAF50;
+    color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* Color de filas pares */
+    background-color: #f9f9f9;
 }
 
 tr:hover {
-    background-color: #e0f7fa; /* Color de fila al pasar el mouse */
+    background-color: #e0f7fa;
 }
 
-/* Mensajes de error */
 .error-message {
-    color: red; /* Color de error */
+    color: red;
     font-weight: bold;
     margin-top: 10px;
 }
 
-/* Estilos para el tema oscuro */
 .dark-mode .student-dashboard {
-    background-color: #222; /* Fondo del panel de estudiante oscuro */
+    background-color: #222;
 }
 
 .dark-mode header {
-    background-color: #333; /* Fondo de encabezado oscuro */
+    background-color: #333;
 }
 
 .dark-mode .nav-left button,
 .dark-mode .nav-right button {
-    color: #80c745; /* Color de texto en botones oscuros */
+    color: #80c745;
 }
 
 .dark-mode th {
-    background-color: #444; /* Fondo de encabezado de tabla oscuro */
-    color: #fff; /* Texto claro en encabezado */
+    background-color: #444;
+    color: #fff;
 }
 
 .dark-mode td {
-    background-color: #333; /* Fondo de celdas oscuro */
-    color: #fff; /* Texto claro en celdas */
+    background-color: #333;
+    color: #fff;
 }
 
 .dark-mode tr:nth-child(even) {
-    background-color: #444; /* Color de filas pares oscuro */
+    background-color: #444;
 }
 
 .dark-mode tr:hover {
-    background-color: #555; /* Color de fila al pasar el mouse */
+    background-color: #555;
 }
 
 .dark-mode {
-    background-color: #111; /* Fondo general oscuro */
-    color: #fff; /* Texto claro */
+    background-color: #111;
+    color: #fff;
 }

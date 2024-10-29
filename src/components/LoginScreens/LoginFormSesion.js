@@ -18,23 +18,23 @@ function LoginFormSesion() {
                 password
             });
 
-            console.log(response.data); // Para verificar la respuesta
+            console.log(response.data);
 
-            // Verifica si la respuesta contiene un mensaje de éxito y un userId
+           
             if (response.data.message === 'Inicio de sesión exitoso' && response.data.userId) {
-                // Almacena el userId en localStorage
+               
                 localStorage.setItem('userId', response.data.userId);
 
-                // Determina el tipo de usuario basado en la contraseña
+               
                 if (password.startsWith('estudiante')) {
-                    navigate('/student-dashboard'); // Redirige al dashboard del estudiante
+                    navigate('/student-dashboard');
                 } else if (password.startsWith('admin')) {
-                    navigate('/admin-dashboard'); // Redirige al dashboard del administrador
+                    navigate('/admin-dashboard'); 
                 } else {
-                    setError('Tipo de usuario no reconocido.'); // Manejo adicional si no coincide
+                    setError('Tipo de usuario no reconocido.'); 
                 }
             } else {
-                setError('Credenciales incorrectas.'); // Mensaje si las credenciales son incorrectas
+                setError('Credenciales incorrectas.'); 
             }
         } catch (err) {
             console.error(err);

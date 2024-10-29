@@ -1,11 +1,11 @@
-/* Reiniciar el margen y padding */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Fondo blanco total para el Admin Dashboard */
+
 .admin-dashboard {
     display: flex;
     flex-direction: column;
@@ -17,44 +17,39 @@
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* Títulos de secciones */
+
 h1 {
     margin-bottom: 20px;
 }
 
-/* Contenedor de la tabla con desplazamiento horizontal */
 .table-container {
-    max-height: 400px; /* Ajusta la altura máxima según lo necesites */
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
-    border: 1px solid #ddd; /* Opcional: agrega un borde */
-    margin-top: 20px; /* Espaciado superior opcional */
+    max-height: 400px; 
+    overflow-y: auto; 
+    border: 1px solid #ddd;
+    margin-top: 20px; 
 }
 
 
-/* Tabla */
 table {
     width: 90%;
-    min-width: 1200px; /* Para forzar que la tabla sea más ancha que el contenedor */
+    min-width: 1200px;
     border-collapse: collapse;
 }
 
-/* Estilos de celdas */
 th, td {
     border: 1px solid #ddd;
     padding: 12px;
-    max-width: 200px; /* Limita el ancho de las celdas */
+    max-width: 200px;
     overflow: hidden;
-    text-overflow: ellipsis; /* Corta texto largo con puntos suspensivos */
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    text-overflow: ellipsis; 
+    white-space: nowrap;
 }
 
-/* Encabezados de la tabla */
 th {
     background-color: #4CAF50;
     color: white;
 }
 
-/* Estilos para filas */
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
@@ -63,10 +58,9 @@ tr:hover {
     background-color: #e0f7fa;
 }
 
-/* Botones dentro de la tabla */
 .button-container {
     display: flex;
-    gap: 5px; /* Espacio entre los botones */
+    gap: 5px; 
 }
 
 .edit-button, .delete-button {
@@ -85,7 +79,7 @@ tr:hover {
     background-color: #f44336;
 }
 
-/* Modal Styling */
+
 .modal {
     display: flex;
     position: fixed;
@@ -104,7 +98,6 @@ tr:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Close button style for the modal */
 .close {
     color: #aaa;
     float: right;
@@ -117,7 +110,6 @@ tr:hover {
         cursor: pointer;
     }
 
-/* Estilos específicos para la sección de personas */
 .people-section {
     margin-top: 40px;
     width: 100%;
