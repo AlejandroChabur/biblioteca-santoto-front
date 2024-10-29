@@ -3,14 +3,24 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 const BookForm = ({ onSubmit, initialData }) => {
-    const [bookData, setBookData] = React.useState(initialData);
+    // Inicializa bookData con un objeto por defecto si initialData es null
+    const [bookData, setBookData] = React.useState(initialData || {
+        title: '',
+        idEdition: '',
+        code: '',
+        publicationYear: ''
+    });
 
     React.useEffect(() => {
-        setBookData(initialData);
+        setBookData(initialData || {
+            title: '',
+            idEdition: '',
+            code: '',
+            publicationYear: ''
+        });
     }, [initialData]);
 
     const handleDateChange = (date) => {
-        // Almacena la fecha como una cadena en formato YYYY-MM-DD
         const formattedDate = date ? date.toISOString().split('T')[0] : '';
         setBookData({ ...bookData, publicationYear: formattedDate });
     };
@@ -18,7 +28,6 @@ const BookForm = ({ onSubmit, initialData }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Construir el objeto a enviar
         const dataToSubmit = {
             code: bookData.code,
             edition: {
@@ -59,15 +68,12 @@ const BookForm = ({ onSubmit, initialData }) => {
                 onChange={(e) => setBookData({ ...bookData, code: e.target.value })}
                 required
             />
-
-            {/* Date Picker para seleccionar solo la fecha */}
             <DatePicker
                 selected={bookData.publicationYear ? new Date(bookData.publicationYear) : null}
                 onChange={handleDateChange}
                 dateFormat="yyyy-MM-dd"
                 placeholderText="Selecciona la fecha"
             />
-
             <button type="submit">Guardar</button>
         </form>
     );
