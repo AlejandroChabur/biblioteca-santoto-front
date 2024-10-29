@@ -3,10 +3,10 @@ import axios from 'axios';  // Asegúrate de tener axios instalado
 import './LoginForm.css';
 function RegistrationForm() {
     const [name, setName] = useState('');  // Solicita solo el nombre
-    const [email,setEmail]= useState('');
-    const [password,setPassword]= useState('');
-    const [phoneNumber,setPhoneNumber]= useState('');
-    const [userCode, setUserCode]=useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [userCode, setUserCode] = useState('');
     const [idUserType, setIdUserType] = useState('');  // Solicita solo el IdPerson
     const [idPerson, setIdPerson] = useState('');  // Solicita solo el IdPerson
     const [error, setError] = useState('');
@@ -15,8 +15,8 @@ function RegistrationForm() {
         e.preventDefault();
         try {
             await axios.post('http://www.bibliotecasanttotomas.somee.com/api/User', {
-                id: 0,  // Valor por defecto para `id`
-                idPerson: idPerson,  // Envía `idPerson` recibido del formulario
+                id: 0,  // Valor por defecto para id
+                idPerson: idPerson,  // Envía idPerson recibido del formulario
                 name: name,  // Envía el nombre recibido del formulario
                 email: email,  // Campo predeterminado o no solicitado
                 password: password,  // Campo predeterminado o no solicitado
@@ -29,7 +29,7 @@ function RegistrationForm() {
                     isDelete: false  // Campo por defecto
                 },
                 peoples: {
-                    id: idPerson,  // Usa el `idPerson` del formulario
+                    id: idPerson,  // Usa el idPerson del formulario
                     idIdentificationType: 0,  // Valor predeterminado
                     identificationNumber: '00000000',  // Valor predeterminado
                     firstName: name,  // Usa el nombre recibido del formulario
@@ -74,7 +74,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="Password"
                     value={password}
@@ -82,7 +82,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="PhoneNumber"
                     value={phoneNumber}
@@ -90,7 +90,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="UserCode"
                     value={userCode}
@@ -98,7 +98,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="UserType"
                     value={idUserType}

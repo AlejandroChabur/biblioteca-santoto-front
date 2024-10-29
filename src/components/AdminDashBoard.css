@@ -1,94 +1,93 @@
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('https://images.unsplash.com/photo-1508107536691-b1449928187d?q=80&w=1882&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Cambia a la ruta de tu imagen */
-    background-size: cover; /* Asegúrate de que la imagen cubra todo el contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center; /* Centra la imagen en el contenedor */
-    margin: 0; /* Elimina márgenes por defecto */
-    padding: 0; /* Elimina relleno por defecto */
+/* Reiniciar el margen y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Container for dashboard */
+/* Fondo blanco total para el Admin Dashboard */
 .admin-dashboard {
-    width: 150%; /* Cambiado para ocupar toda la pantalla */
-    margin: 0; /* Eliminado margen */
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Color blanco con un poco de transparencia */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative; /* Posicionamiento relativo */
-    z-index: 1; /* Asegúrate de que esté por encima de la imagen de fondo */
-}
-
-/* Menu */
-.navbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Títulos de secciones */
+h1 {
     margin-bottom: 20px;
 }
 
-    .navbar a {
-        padding: 10px 20px;
-        text-decoration: none;
-        color: #4CAF50;
-        background-color: #e6f5e1;
-        border-radius: 4px;
-        margin: 0 5px;
-    }
-
-        .navbar a:hover {
-            background-color: #ccebd1;
-        }
-
-/* Table */
+/* Contenedor de la tabla con desplazamiento horizontal */
 .table-container {
-    overflow-x: auto;
-    margin-top: 20px;
+    max-height: 400px; /* Ajusta la altura máxima según lo necesites */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    border: 1px solid #ddd; /* Opcional: agrega un borde */
+    margin-top: 20px; /* Espaciado superior opcional */
 }
 
+
+/* Tabla */
 table {
-    width: 100%;
+    width: 90%;
+    min-width: 1200px; /* Para forzar que la tabla sea más ancha que el contenedor */
     border-collapse: collapse;
-    margin-bottom: 20px;
 }
 
-    table th, table td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
-
-    table th {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    table td {
-        background-color: #f9f9f9;
-    }
-
-.button-container button {
-    padding: 6px 10px;
-    margin: 2px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* Estilos de celdas */
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    max-width: 200px; /* Limita el ancho de las celdas */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Corta texto largo con puntos suspensivos */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
 
-.button-container .edit-button {
+/* Encabezados de la tabla */
+th {
     background-color: #4CAF50;
     color: white;
 }
 
-.button-container .delete-button {
-    background-color: #f44336;
+/* Estilos para filas */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #e0f7fa;
+}
+
+/* Botones dentro de la tabla */
+.button-container {
+    display: flex;
+    gap: 5px; /* Espacio entre los botones */
+}
+
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     color: white;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+}
+
+.delete-button {
+    background-color: #f44336;
 }
 
 /* Modal Styling */
 .modal {
-    display: none; /* Este se controla en el componente ahora */
+    display: flex;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -96,24 +95,19 @@ table {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Close button style for the modal */
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
 }
 
     .close:hover,
@@ -121,4 +115,15 @@ table {
         color: black;
         text-decoration: none;
         cursor: pointer;
+    }
+
+/* Estilos específicos para la sección de personas */
+.people-section {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+    .people-section h2 {
+        margin-bottom: 20px;
     }
