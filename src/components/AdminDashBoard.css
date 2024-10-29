@@ -14,47 +14,16 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #333;
-    height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
-    background-color: #ffffff; /* Fondo blanco */
-}
-
-/* Encabezado (barra de navegación) */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #ffffff; /* Fondo claro */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav-left button,
-.nav-right button {
-    background: none;
-    border: none;
-    color: #4CAF50; /* Color de texto en modo claro */
-    font-size: 16px;
-    cursor: pointer;
-    padding: 8px 12px;
-    transition: color 0.3s, background-color 0.3s;
-}
-
-    .nav-left button:hover,
-    .nav-right button:hover {
-        background-color: #4CAF50; /* Fondo al pasar el mouse */
-        color: #fff; /* Texto blanco al pasar el mouse */
-    }
-
-.nav-right span {
-    color: #333; /* Color de texto */
-    font-weight: bold;
+    height: auto; /* Ajustado para no ocupar toda la altura de la ventana */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
 }
 
 /* Tabla */
 .table-container {
-    width: 80%; /* Ajusta el ancho según tus necesidades */
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+    max-width: 1200px; /* Limita el ancho máximo */
     margin-top: 20px;
+    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
 }
 
 table {
@@ -78,12 +47,6 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #e0f7fa; /* Color de fila al pasar el mouse */
-}
-
-/* Mensajes de error */
-.error-message {
-    color: red; /* Color de error */
-    font-weight: bold;
 }
 
 /* Modal Styling */
@@ -117,25 +80,3 @@ tr:hover {
         text-decoration: none;
         cursor: pointer;
     }
-
-/* Estilos para tema oscuro (opcional) */
-/* .dark-mode .admin-dashboard { */
-/*     background-color: #222; */
-/* } */
-/* .dark-mode header { */
-/*     background-color: #333; */
-/* } */
-/* .dark-mode th { */
-/*     background-color: #444; */
-/*     color: white; */
-/* } */
-/* .dark-mode td { */
-/*     background-color: #333; */
-/*     color:white; */
-/* } */
-/* .dark-mode tr:nth-child(even) { */
-/*     background-color:#444; */
-/* } */
-/* .dark-mode tr:hover { */
-/*     background-color:#555; */
-/* } */

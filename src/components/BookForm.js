@@ -1,22 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-const BookForm = ({ onSubmit, initialData, isEdit }) => {
-    const [bookData, setBookData] = useState(initialData);
+const BookForm = ({ onSubmit, initialData }) => {
+    const [bookData, setBookData] = React.useState(initialData);
 
-    useEffect(() => {
+    React.useEffect(() => {
         setBookData(initialData);
     }, [initialData]);
 
     const handleDateChange = (date) => {
-        setBookData({ ...bookData, publicationYear: date });
+        // Almacena la fecha como una cadena en formato YYYY-MM-DD
+        const formattedDate = date ? date.toISOString().split('T')[0] : '';
+        setBookData({ ...bookData, publicationYear: formattedDate });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Datos a enviar:", bookData); // Verifica qué datos se envían
-        onSubmit(bookData);
+
+        // Construir el objeto a enviar
+        const dataToSubmit = {
+            code: bookData.code,
+            edition: {
+                id: bookData.idEdition,
+                editionName: bookData.edition?.editionName || '',
+                isDelete: false
+            },
+            idEdition: bookData.idEdition,
+            isDelete: false,
+            publicationYear: bookData.publicationYear,
+            title: bookData.title
+        };
+
+        console.log("Datos a enviar:", dataToSubmit); // Verifica qué datos se envían
+        onSubmit(dataToSubmit);
     };
 
     return (
@@ -42,17 +59,16 @@ const BookForm = ({ onSubmit, initialData, isEdit }) => {
                 onChange={(e) => setBookData({ ...bookData, code: e.target.value })}
                 required
             />
+
+            {/* Date Picker para seleccionar solo la fecha */}
             <DatePicker
                 selected={bookData.publicationYear ? new Date(bookData.publicationYear) : null}
                 onChange={handleDateChange}
                 dateFormat="yyyy-MM-dd"
-                showYearDropdown
-                showMonthDropdown
-                yearDropdownItemNumber={100}
-                scrollableYearDropdown
-                placeholderText="Selecciona el año de publicación"
+                placeholderText="Selecciona la fecha"
             />
-            <button type="submit">{isEdit ? 'Actualizar Libro' : 'Agregar Libro'}</button>
+
+            <button type="submit">Guardar</button>
         </form>
     );
 };
