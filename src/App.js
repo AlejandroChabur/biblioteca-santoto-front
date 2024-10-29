@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom"; 
+import React from 'react';
+import { Routes, Route } from "react-router-dom";
 // Importa tus componentes
 import './App.css';
 import Home from './components/Home';
@@ -7,6 +8,7 @@ import LoginForm from "./components/LoginScreens/LoginForm"; // Formulario de re
 import PrivateRoute from "./components/routing/PrivateRoute"; // Asegúrate de que este componente esté correctamente implementado
 import StudentDashboard from './components/StudentDashboard';
 import AdminDashboard from "./components/AdminDashBoard";
+
 const App = () => {
     return (
         <div className="app">
@@ -16,7 +18,7 @@ const App = () => {
                 <Route path="/register" element={<LoginForm />} /> {/* Formulario de registro */}
                 <Route path="/student-dashboard" element={<StudentDashboard />} />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
-                
+
                 {/* Rutas eliminadas para ForgotPassword, ResetPassword y PrivateScreen */}
             </Routes>
         </div>
