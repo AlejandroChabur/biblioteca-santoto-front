@@ -56,7 +56,7 @@ const AdminDashboard = () => {
     };
 
     const openEditModal = (book) => {
-        setEditBook(book);
+        setEditBook(book); // Establece el libro a editar
     };
 
     return (
@@ -74,7 +74,11 @@ const AdminDashboard = () => {
                 <div className="modal">
                     <div className="modal-content">
                         <h2>Editar Libro</h2>
-                        <BookForm onSubmit={handleEditBook} initialData={editBook} isEdit />
+                        <BookForm
+                            onSubmit={handleEditBook}
+                            initialData={editBook}
+                            isEdit
+                        />
                         <button onClick={() => setEditBook(null)}>Cerrar</button>
                     </div>
                 </div>

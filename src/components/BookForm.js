@@ -7,7 +7,7 @@ const BookForm = ({ onSubmit, initialData, isEdit }) => {
 
     useEffect(() => {
         setBookData(initialData);
-    }, [initialData]); // Actualiza el formulario si cambian los datos iniciales
+    }, [initialData]);
 
     const handleDateChange = (date) => {
         setBookData({ ...bookData, publicationYear: date });
@@ -15,6 +15,7 @@ const BookForm = ({ onSubmit, initialData, isEdit }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("Datos a enviar:", bookData); // Verifica qué datos se envían
         onSubmit(bookData);
     };
 
@@ -41,19 +42,16 @@ const BookForm = ({ onSubmit, initialData, isEdit }) => {
                 onChange={(e) => setBookData({ ...bookData, code: e.target.value })}
                 required
             />
-
-            {/* Date Picker para seleccionar la fecha de publicación */}
             <DatePicker
                 selected={bookData.publicationYear ? new Date(bookData.publicationYear) : null}
                 onChange={handleDateChange}
                 dateFormat="yyyy-MM-dd"
                 showYearDropdown
                 showMonthDropdown
-                yearDropdownItemNumber={100}  // Rango de años
-                scrollableYearDropdown       // Dropdown desplazable de años
+                yearDropdownItemNumber={100}
+                scrollableYearDropdown
                 placeholderText="Selecciona el año de publicación"
             />
-
             <button type="submit">{isEdit ? 'Actualizar Libro' : 'Agregar Libro'}</button>
         </form>
     );
