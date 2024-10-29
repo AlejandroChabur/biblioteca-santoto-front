@@ -1,88 +1,89 @@
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('https://images.unsplash.com/photo-1508107536691-b1449928187d?q=80&w=1882&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+/* Reiniciar el margen y padding */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Container for dashboard */
+/* Fondo blanco total para el Admin Dashboard */
 .admin-dashboard {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra verticalmente */
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+    height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+    background-color: #ffffff; /* Fondo blanco */
 }
 
-/* Menu */
-.navbar {
+/* Encabezado (barra de navegación) */
+header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Fondo claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-    .navbar a {
-        padding: 10px 20px;
-        text-decoration: none;
-        color: #4CAF50;
-        background-color: #e6f5e1;
-        border-radius: 4px;
-        margin: 0 5px;
+.nav-left button,
+.nav-right button {
+    background: none;
+    border: none;
+    color: #4CAF50; /* Color de texto en modo claro */
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+    .nav-left button:hover,
+    .nav-right button:hover {
+        background-color: #4CAF50; /* Fondo al pasar el mouse */
+        color: #fff; /* Texto blanco al pasar el mouse */
     }
 
-        .navbar a:hover {
-            background-color: #ccebd1;
-        }
+.nav-right span {
+    color: #333; /* Color de texto */
+    font-weight: bold;
+}
 
-/* Table */
+/* Tabla */
 .table-container {
-    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
+    width: 80%; /* Ajusta el ancho según tus necesidades */
     margin-top: 20px;
 }
 
 table {
     width: 100%; /* Mantiene el ancho completo de su contenedor */
-    max-width: 100%; /* Asegura que no exceda el contenedor */
+    border-collapse: collapse; /* Colapsa bordes */
 }
 
-    table th,
-    table td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
-
-    table th {
-        background-color: #4CAF50; /* Color de fondo para el encabezado */
-        color: white; /* Color del texto del encabezado */
-    }
-
-    table td {
-        background-color: #f9f9f9; /* Color de fondo para las celdas */
-    }
-
-.button-container button {
-    padding: 6px 10px;
-    margin: 2px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+th, td {
+    border: 1px solid #ddd; /* Borde claro */
+    padding: 12px; /* Espaciado interno */
 }
 
-.button-container .edit-button {
-    background-color: #4CAF50; /* Color del botón de editar */
-    color: white; /* Color del texto del botón de editar */
+th {
+    background-color: #4CAF50; /* Fondo de encabezado */
+    color: white; /* Texto de encabezado */
 }
 
-.button-container .delete-button {
-    background-color: #f44336; /* Color del botón de eliminar */
-    color: white; /* Color del texto del botón de eliminar */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de filas pares */
+}
+
+tr:hover {
+    background-color: #e0f7fa; /* Color de fila al pasar el mouse */
+}
+
+/* Mensajes de error */
+.error-message {
+    color: red; /* Color de error */
+    font-weight: bold;
 }
 
 /* Modal Styling */
@@ -116,3 +117,25 @@ table {
         text-decoration: none;
         cursor: pointer;
     }
+
+/* Estilos para tema oscuro (opcional) */
+/* .dark-mode .admin-dashboard { */
+/*     background-color: #222; */
+/* } */
+/* .dark-mode header { */
+/*     background-color: #333; */
+/* } */
+/* .dark-mode th { */
+/*     background-color: #444; */
+/*     color: white; */
+/* } */
+/* .dark-mode td { */
+/*     background-color: #333; */
+/*     color:white; */
+/* } */
+/* .dark-mode tr:nth-child(even) { */
+/*     background-color:#444; */
+/* } */
+/* .dark-mode tr:hover { */
+/*     background-color:#555; */
+/* } */

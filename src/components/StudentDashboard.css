@@ -5,8 +5,8 @@
     box-sizing: border-box;
 }
 
-/* Fondo blanco total para el Admin Dashboard */
-.admin-dashboard {
+/* Fondo blanco total para el Student Dashboard */
+.student-dashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,6 +44,7 @@ header {
     .nav-right button:hover {
         background-color: #4CAF50; /* Fondo al pasar el mouse */
         color: #fff; /* Texto blanco al pasar el mouse */
+        border-radius: 5px;
     }
 
 .nav-right span {
@@ -51,20 +52,43 @@ header {
     font-weight: bold;
 }
 
+/* Sección de Filtros */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+    .filters input {
+        padding: 8px 12px;
+        border: 1px solid #ddd; /* Borde claro */
+        border-radius: 5px;
+        font-size: 16px;
+        width: 200px;
+        transition: border-color 0.3s;
+    }
+
+        .filters input:focus {
+            border-color: #4CAF50; /* Borde al enfocar */
+            outline: none;
+        }
+
 /* Tabla */
 .table-container {
-    width: 80%; /* Ajusta el ancho según tus necesidades */
+    width: 80%;
     margin-top: 20px;
 }
 
 table {
-    width: 100%; /* Mantiene el ancho completo de su contenedor */
-    border-collapse: collapse; /* Colapsa bordes */
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
     border: 1px solid #ddd; /* Borde claro */
-    padding: 12px; /* Espaciado interno */
+    padding: 12px;
+    text-align: left;
 }
 
 th {
@@ -84,58 +108,42 @@ tr:hover {
 .error-message {
     color: red; /* Color de error */
     font-weight: bold;
+    margin-top: 10px;
 }
 
-/* Modal Styling */
-.modal {
-    display: flex; /* Cambiado a flex para centrar contenido en el modal */
-    position: fixed; /* Fijo para que cubra toda la pantalla */
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Permite desplazamiento si es necesario */
+/* Estilos para el tema oscuro */
+.dark-mode .student-dashboard {
+    background-color: #222; /* Fondo del panel de estudiante oscuro */
 }
 
-.modal-content {
-    background-color: #fefefe; /* Fondo blanco para el contenido del modal */
-    padding: 20px;
-    border-radius: 8px; /* Bordes redondeados en el modal */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad al modal */
+.dark-mode header {
+    background-color: #333; /* Fondo de encabezado oscuro */
 }
 
-/* Close button style for the modal */
-.close {
-    color: #aaa;
-    float: right;
+.dark-mode .nav-left button,
+.dark-mode .nav-right button {
+    color: #80c745; /* Color de texto en botones oscuros */
 }
 
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+.dark-mode th {
+    background-color: #444; /* Fondo de encabezado de tabla oscuro */
+    color: #fff; /* Texto claro en encabezado */
+}
 
-/* Estilos para tema oscuro (opcional) */
-/* .dark-mode .admin-dashboard { */
-/*     background-color: #222; */
-/* } */
-/* .dark-mode header { */
-/*     background-color: #333; */
-/* } */
-/* .dark-mode th { */
-/*     background-color: #444; */
-/*     color: white; */
-/* } */
-/* .dark-mode td { */
-/*     background-color: #333; */
-/*     color:white; */
-/* } */
-/* .dark-mode tr:nth-child(even) { */
-/*     background-color:#444; */
-/* } */
-/* .dark-mode tr:hover { */
-/*     background-color:#555; */
-/* } */
+.dark-mode td {
+    background-color: #333; /* Fondo de celdas oscuro */
+    color: #fff; /* Texto claro en celdas */
+}
+
+.dark-mode tr:nth-child(even) {
+    background-color: #444; /* Color de filas pares oscuro */
+}
+
+.dark-mode tr:hover {
+    background-color: #555; /* Color de fila al pasar el mouse */
+}
+
+.dark-mode {
+    background-color: #111; /* Fondo general oscuro */
+    color: #fff; /* Texto claro */
+}
