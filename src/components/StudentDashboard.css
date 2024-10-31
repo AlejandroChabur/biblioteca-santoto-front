@@ -14,7 +14,6 @@
     color: #333;
     height: 100vh;
     background-color: #ffffff;
-
 }
 
 header {
@@ -127,7 +126,6 @@ tr:hover {
 .dark-mode td {
     background-color: #333;
     color: #fff;
-
 }
 
 .dark-mode tr:nth-child(even) {

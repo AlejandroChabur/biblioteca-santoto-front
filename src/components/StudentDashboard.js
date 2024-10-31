@@ -19,7 +19,7 @@ function StudentDashboard() {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await axios.get('https://www.bibliotecasanttotomas.somee.com/api/Books');
+                const response = await axios.get('http://www.bibliotecasanttotomas.somee.com/api/Books');
                 setBooks(response.data);
             } catch (err) {
                 console.error(err);
@@ -37,7 +37,7 @@ function StudentDashboard() {
 
                 try {
                     // Llama a la API para obtener la información del usuario usando userId
-                    const response = await axios.get(`https://www.bibliotecasanttotomas.somee.com/api/User/${userInfo.userId}`);
+                    const response = await axios.get(`http://www.bibliotecasanttotomas.somee.com/api/User/${userInfo.userId}`);
                     setUser(prevUser => ({ ...prevUser, details: response.data })); // Almacena la información del usuario
                     console.log("User Info from API:", response.data); // Verifica la respuesta de la API
                 } catch (err) {
