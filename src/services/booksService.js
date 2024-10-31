@@ -1,7 +1,7 @@
 // booksService.js
 import axios from 'axios';
 
-const API_URL = 'http://www.bibliotecasanttotomas.somee.com/api/Books';
+const API_URL = 'https://www.bibliotecasanttotomas.somee.com/api/Books';
 
 const booksService = {
     GetAllBooks: async () => {
