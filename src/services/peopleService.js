@@ -1,6 +1,6 @@
  import axios from 'axios';
 
-const API_URL = 'https://www.bibliotecasanttotomas.somee.com/api/People'; // Ajusta la URL según sea necesario
+const API_URL = 'http://www.bibliotecasanttotomas.somee.com/api/People'; // Ajusta la URL según sea necesario
 
 const peopleService = {
     GetAllPeople: async () => {
