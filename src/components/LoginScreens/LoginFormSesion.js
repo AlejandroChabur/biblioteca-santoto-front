@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './LoginFormSesion.css';
-
 
 function LoginFormSesion() {
     const [email, setEmail] = useState('');
@@ -14,33 +13,32 @@ function LoginFormSesion() {
         e.preventDefault();
         try {
             // Realiza la solicitud de inicio de sesión
-            const response = await axios.post('http://www.bibliotecasanttotomas.somee.com/api/User/Login', {
+            const response = await axios.post('https://www.bibliotecasanttotomas.somee.com/api/User/Login', {
                 email,
                 password
             });
-            
-            console.log(response.data); // Para verificar la respuesta
-            
-            // Determina el tipo de usuario basado en el prefijo de la contraseña
-            let userType;
-            if (password.startsWith('admin')) {
-                userType = 'admin'; // Tipo de usuario es admin
-            } else if (password.startsWith('estudiante')) {
-                userType = 'estudiante'; // Tipo de usuario es estudiante
-            } else {
-                setError('Tipo de usuario no reconocido.'); // Manejo adicional si no coincide
-                return; // Salir si no se reconoce el tipo de usuario
-            }
 
-            // Redirige según el tipo de usuario
-            if (userType === 'admin') {
-                navigate('/admin-dashboard'); // Redirige al dashboard del administrador
-            } else if (userType === 'estudiante') {
-                navigate('/student-dashboard'); // Redirige al dashboard del estudiante
+            console.log(response.data);
+
+           
+            if (response.data.message === 'Inicio de sesión exitoso' && response.data.userId) {
+               
+                localStorage.setItem('userId', response.data.userId);
+
+               
+                if (password.startsWith('estudiante')) {
+                    navigate('/student-dashboard');
+                } else if (password.startsWith('admin')) {
+                    navigate('/admin-dashboard'); 
+                } else {
+                    setError('Tipo de usuario no reconocido.'); 
+                }
+            } else {
+                setError('Credenciales incorrectas.'); 
             }
         } catch (err) {
             console.error(err);
-            setError('Credenciales incorrectas.');
+            setError('Error en el proceso de inicio de sesión.');
         }
     };
 

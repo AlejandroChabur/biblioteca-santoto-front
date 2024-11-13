@@ -3,10 +3,10 @@ import axios from 'axios';  // Asegúrate de tener axios instalado
 import './LoginForm.css';
 function RegistrationForm() {
     const [name, setName] = useState('');  // Solicita solo el nombre
-    const [email,setEmail]= useState('');
-    const [password,setPassword]= useState('');
-    const [phoneNumber,setPhoneNumber]= useState('');
-    const [userCode, setUserCode]=useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [userCode, setUserCode] = useState('');
     const [idUserType, setIdUserType] = useState('');  // Solicita solo el IdPerson
     const [idPerson, setIdPerson] = useState('');  // Solicita solo el IdPerson
     const [error, setError] = useState('');
@@ -14,38 +14,38 @@ function RegistrationForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://www.bibliotecasanttotomas.somee.com/api/User', {
-                id: 0,  // Valor por defecto para `id`
-                idPerson: idPerson,  // Envía `idPerson` recibido del formulario
-                name: name,  // Envía el nombre recibido del formulario
-                email: email,  // Campo predeterminado o no solicitado
-                password: password,  // Campo predeterminado o no solicitado
-                phoneNumber: phoneNumber,  // Campo predeterminado o no solicitado
-                userCode: userCode,  // Campo predeterminado o no solicitado
-                idUserType: idUserType,  // Tipo de usuario por defecto
+            await axios.post('https://www.bibliotecasanttotomas.somee.com/api/User', {
+                id: 0,
+                idPerson: idPerson,
+                name: name,
+                email: email,
+                password: password,
+                phoneNumber: phoneNumber,
+                userCode: userCode,
+                idUserType: idUserType,
                 userTypes: {
-                    id: idUserType,  // Relación con el tipo de usuario por defecto
-                    name: 'default',  // Ajusta el nombre según lo requerido
-                    isDelete: false  // Campo por defecto
+                    id: idUserType,
+                    name: 'default',
+                    isDelete: false
                 },
                 peoples: {
-                    id: idPerson,  // Usa el `idPerson` del formulario
-                    idIdentificationType: 0,  // Valor predeterminado
-                    identificationNumber: '00000000',  // Valor predeterminado
-                    firstName: name,  // Usa el nombre recibido del formulario
-                    middleName: '',  // Campo predeterminado o no solicitado
-                    lastName: '',  // Campo predeterminado o no solicitado
-                    secondLastName: '',  // Campo predeterminado o no solicitado
-                    address: 'default address',  // Campo predeterminado o no solicitado
-                    borndate: '2000-01-01',  // Valor por defecto o no solicitado
+                    id: idPerson,
+                    idIdentificationType: 0,
+                    identificationNumber: '00000000',
+                    firstName: name,
+                    middleName: '',
+                    lastName: '',
+                    secondLastName: '',
+                    address: 'default address',
+                    borndate: '2000-01-01',
                     identificationTypes: {
-                        id: 0,  // Valor predeterminado
-                        name: 'default',  // Ajusta el tipo de identificación
-                        isDelete: false  // Campo por defecto
+                        id: 0,
+                        name: 'default',
+                        isDelete: false
                     },
-                    isDelete: false  // Valor por defecto
+                    isDelete: false
                 },
-                isDelete: false  // Valor por defecto
+                isDelete: false
             });
             alert('Usuario registrado exitosamente');
         } catch (err) {
@@ -53,6 +53,7 @@ function RegistrationForm() {
             setError('Error en el proceso, verifica los datos.');
         }
     };
+
 
     return (
         <div className="registration-form-container">
@@ -74,7 +75,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="Password"
                     value={password}
@@ -82,7 +83,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="PhoneNumber"
                     value={phoneNumber}
@@ -90,7 +91,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="UserCode"
                     value={userCode}
@@ -98,7 +99,7 @@ function RegistrationForm() {
                     required
                     className="form-input"
                 />
-                  <input
+                <input
                     type="text"
                     placeholder="UserType"
                     value={idUserType}
