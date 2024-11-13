@@ -32,14 +32,14 @@ h1 {
 
 table {
     width: 90%;
-    min-width: 1200px;
+    min-width: 1600px;
     border-collapse: collapse;
 }
 
 th, td {
     border: 1px solid #ddd;
     padding: 12px;
-    max-width: 200px;
+    max-width: 160px;
     overflow: hidden;
     text-overflow: ellipsis; 
     white-space: nowrap;
@@ -118,4 +118,19 @@ tr:hover {
 
     .people-section h2 {
         margin-bottom: 20px;
+    }
+.logout-button {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+    .logout-button:hover {
+        background-color: #d32f2f;
     }

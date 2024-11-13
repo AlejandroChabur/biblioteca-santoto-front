@@ -1,0 +1,35 @@
+.policy-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro para resaltar el contenido */
+    color: white;
+    flex-direction: column;
+    text-align: center;
+}
+
+    .policy-page h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .policy-page p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+.accept-policy-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+    .accept-policy-button:hover {
+        background-color: #218838;
+    }
