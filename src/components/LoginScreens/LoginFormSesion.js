@@ -12,8 +12,9 @@ function LoginFormSesion() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+
             // Realizar la solicitud de inicio de sesión
-            const response = await axios.post('http://www.bibliotecasanttotomas.somee.com/api/User/Login', {
+            const response = await axios.post('http://www.bibliotecasanttotomas.somee.com/api/User/Login'
                 email,
                 password
             });

@@ -14,7 +14,7 @@ function RegistrationForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://www.bibliotecasanttotomas.somee.com/api/User', {
+            await axios.post('https://www.bibliotecasanttotomas.somee.com/api/User', {
                 id: 0,
                 idPerson: idPerson,
                 name: name,
