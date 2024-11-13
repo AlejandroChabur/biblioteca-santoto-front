@@ -6,14 +6,47 @@ import BookTable from './BookTable';
 import PeopleForm from './PeopleForm';
 import PeopleTable from './PeopleTable';
 import LoginForm from './LoginScreens/LoginForm';
-
+import RegisterUserForm from './RegisterUserForm'; // Importa el formulario de registro de usuario
+import { useNavigate } from 'react-router-dom';
 import './AdminDashBoard.css';
 
 
+
+
 const AdminDashboard = () => {
-    const [books, setBooks] = useState([]);
+    const [activeTab, setActiveTab] = useState('books');
+    const [filter, setFilter] = useState(''); // Estado para almacenar el filtro
+    const [books, setBooks] = useState([
+        { id: 1, title: 'Libro A', code: 'A001' },
+        { id: 2, title: 'Libro B', code: 'B002' },
+        { id: 3, title: 'Libro C', code: 'C003' },
+    ]); // Ejemplo de lista de libros
+    const [filteredBooks, setFilteredBooks] = useState(books);
+
+    // Función para cambiar la pestaña activa
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+    };
+
+    // Función para manejar el filtro
+    const handleFilterChange = (e) => {
+        setFilter(e.target.value);
+        const filtered = books.filter(book =>
+            book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            book.code.toLowerCase().includes(e.target.value.toLowerCase())
+        );
+        setFilteredBooks(filtered);
+    };
+
+    // Función para cerrar sesión (redirecciona a la página de login)
+    const handleLogout = () => {
+        // Aquí puedes agregar la lógica para cerrar la sesión, como eliminar los tokens de autenticación
+        alert('Sesión cerrada');
+        window.location.href = '/login'; // Redirigir al login (ajustar según tu configuración de rutas)
+    };
+
     const [people, setPeople] = useState([]);
-    const [activeTab, setActiveTab] = useState('books'); 
+
    
     const [newBook, setNewBook] = useState({
         title: '',
@@ -214,40 +247,69 @@ const AdminDashboard = () => {
         }
     };
     const AdminDashboard = () => {
-        const [activeSection, setActiveSection] = useState('books');
+
+        const [activeTab, setActiveTab] = useState('books');
 
         return (
             <div className="admin-dashboard">
-                <header>
-                    <h1>Panel de Administración</h1>
-                    <nav>
-                        <button onClick={() => setActiveSection('books')}>Libros</button>
-                        <button onClick={() => setActiveSection('people')}>Personas</button>
-                        <button onClick={() => setActiveSection('register')}>Registrar Usuario</button>
-                    </nav>
-                </header>
+                <h1>Gestión Administrativa</h1>
 
-                {activeSection === 'books' && <BookTable />} 
-                {activeSection === 'people' && <PeopleTable />}
-                {activeSection === 'register' && <LoginForm />} 
+                <div className="tabs">
+                    <button onClick={() => setActiveTab('books')} className={activeTab === 'books' ? 'active' : ''}>Libros</button>
+                    <button onClick={() => setActiveTab('people')} className={activeTab === 'people' ? 'active' : ''}>Personas</button>
+                    <button onClick={() => setActiveTab('register')} className={activeTab === 'register' ? 'active' : ''}>Registrar Usuario</button>
+                </div>
+
+                {activeTab === 'books' && (
+                    <div>
+                        {/* Gestión de Libros */}
+                        {/* ... tu código de gestión de libros aquí ... */}
+                    </div>
+                )}
+
+                {activeTab === 'people' && (
+                    <div>
+                        {/* Gestión de Personas */}
+                        {/* ... tu código de gestión de personas aquí ... */}
+                    </div>
+                )}
+
+                {activeTab === 'register' && (
+                    <div>
+                        <h2>Registrar Nuevo Usuario</h2>
+                        <RegisterUserForm />
+                    </div>
+                )}
             </div>
         );
     };
+
 
 
     return (
         <div className="admin-dashboard">
             <h1>Gestión Administrativa</h1>
 
-           
             <div className="tabs">
                 <button onClick={() => setActiveTab('books')} className={activeTab === 'books' ? 'active' : ''}>Libros</button>
                 <button onClick={() => setActiveTab('people')} className={activeTab === 'people' ? 'active' : ''}>Personas</button>
+                <button onClick={() => setActiveTab('register')} className={activeTab === 'register' ? 'active' : ''}>Registrar Usuario</button>
             </div>
 
+            {/* Pestaña de Libros */}
             {activeTab === 'books' && (
                 <div>
                     <h2>Gestión de Libros</h2>
+                    {/* Filtro de libros */}
+                    <input
+                        type="text"
+                        placeholder="Buscar libro por título o código"
+                        value={filter}
+                        onChange={handleFilterChange}
+                        className="filter-input"
+                    />
+
+                    {/* Formulario para agregar un libro */}
                     <form onSubmit={handleAddBook}>
                         <input type="text" placeholder="Título" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })} required />
                         <input type="number" placeholder="ID de Edición" value={newBook.idEdition} onChange={(e) => setNewBook({ ...newBook, idEdition: Number(e.target.value) })} required />
@@ -256,8 +318,10 @@ const AdminDashboard = () => {
                         <button type="submit">Agregar Libro</button>
                     </form>
 
-                    <BookTable books={books} onEdit={openEditModal} onDelete={handleDeleteBook} />
+                    {/* Mostrar tabla de libros */}
+                    <BookTable books={filteredBooks} onEdit={openEditModal} onDelete={handleDeleteBook} />
 
+                    {/* Modal de edición */}
                     {isEditModalOpen && (
                         <div className="modal" style={{ display: 'block' }}>
                             <div className="modal-content">
@@ -276,6 +340,7 @@ const AdminDashboard = () => {
                 </div>
             )}
 
+            {/* Pestaña de Personas */}
             {activeTab === 'people' && (
                 <div>
                     <h2>Gestión de Personas</h2>
@@ -312,6 +377,14 @@ const AdminDashboard = () => {
                             </div>
                         </div>
                     )}
+                </div>
+            )}
+
+            {/* Pestaña para Registrar Usuario */}
+            {activeTab === 'register' && (
+                <div>
+                    <h2>Registrar Usuario</h2>
+                    <LoginForm /> {/* Aquí llamas a tu formulario de registro */}
                 </div>
             )}
         </div>
