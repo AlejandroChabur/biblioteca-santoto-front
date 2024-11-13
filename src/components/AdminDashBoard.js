@@ -119,6 +119,8 @@ const AdminDashboard = () => {
                 idEdition: 0,
                 edition: { id: 0, editionName: '', isDelete: false }
             });
+            alert('Libro registrado exitosamente');
+
         } catch (error) {
             console.error("Error adding book:", error);
             alert("Error al agregar el libro.");
@@ -142,6 +144,7 @@ const AdminDashboard = () => {
             await booksService.UpdateBook(editBookId, bookData);
             fetchBooks();
             setIsEditModalOpen(false);
+            alert('Libro Editado Correctamente');
         } catch (error) {
             console.error("Error updating book:", error);
             alert("Error al actualizar el libro.");
@@ -154,6 +157,7 @@ const AdminDashboard = () => {
             try {
                 await booksService.DeleteBook(bookId);
                 fetchBooks();
+                alert('Libro eliminado correctamente');
             } catch (error) {
                 console.error("Error deleting book:", error);
                 alert("Error al eliminar el libro.");
@@ -221,6 +225,7 @@ const AdminDashboard = () => {
             await peopleService.UpdatePerson(editPersonId, editPersonData);
             fetchPeople();
             setIsEditPersonModalOpen(false);
+            alert('Persona editada exitosamente');
         } catch (error) {
             console.error("Error updating person:", error);
             alert("Error al actualizar la persona.");
@@ -233,6 +238,7 @@ const AdminDashboard = () => {
             try {
                 await peopleService.DeletePerson(personId);
                 fetchPeople();
+                alert('Persona Eliminada exitosamente');
             } catch (error) {
                 console.error("Error deleting person:", error);
                 alert("Error al eliminar la persona.");

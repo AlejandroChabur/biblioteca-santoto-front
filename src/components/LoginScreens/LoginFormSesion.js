@@ -21,20 +21,19 @@ function LoginFormSesion() {
 
             console.log('Respuesta del servidor:', response);
 
-            // Verificar si el inicio de sesión fue exitoso
+
             if (response.data.message === 'Inicio de sesión exitoso' && response.data.userId) {
-                // Almacenar el userId en localStorage
+     
                 localStorage.setItem('userId', response.data.userId);
 
-                // Comprobar el rol con el valor de la contraseña
                 if (password.startsWith('estudiante')) {
                     console.log('Rol identificado como estudiante');
                     localStorage.setItem('userRole', 'student');
-                    navigate('/student-dashboard');  // Navegar al dashboard de estudiante
+                    navigate('/student-dashboard');  
                 } else if (password.startsWith('admin')) {
                     console.log('Rol identificado como administrador');
                     localStorage.setItem('userRole', 'admin');
-                    navigate('/admin-dashboard');  // Navegar al dashboard de administrador
+                    navigate('/admin-dashboard');  
                 } else {
                     setError('Tipo de usuario no reconocido.');
                     console.log('Error: Tipo de usuario no reconocido.');
