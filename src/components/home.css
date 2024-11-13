@@ -12,6 +12,7 @@ body, .background {
     align-items: center;
 }
 
+/* Registration form styling */
 .registration-form-container {
     max-width: 400px;
     padding: 40px;
@@ -51,9 +52,76 @@ nav .form-button {
         transform: scale(1.02);
     }
 
+/* Styling for the policy popup */
+.policy-popup {
+    
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro para el popup */
+
+
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Asegúrate de que el z-index sea alto */
+}
+
+/* Text styling for the policy message */
+.policy-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Button for accepting the policy */
+.accept-policy-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    .accept-policy-button:hover {
+        background-color: #45a049;
+    }
+
 /* Adjust body alignment */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
+.policy-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.accept-policy-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    .accept-policy-button:hover {
+        background-color: #45a049;
+    }

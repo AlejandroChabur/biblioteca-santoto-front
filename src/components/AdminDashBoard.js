@@ -11,9 +11,33 @@ import './AdminDashBoard.css';
 
 
 const AdminDashboard = () => {
-    const [books, setBooks] = useState([]);
+    const [activeTab, setActiveTab] = useState('books');
+    const [filter, setFilter] = useState(''); // Estado para almacenar el filtro
+    const [books, setBooks] = useState([
+        { id: 1, title: 'Libro A', code: 'A001' },
+        { id: 2, title: 'Libro B', code: 'B002' },
+        { id: 3, title: 'Libro C', code: 'C003' },
+    ]); // Ejemplo de lista de libros
+    const [filteredBooks, setFilteredBooks] = useState(books);
     const [people, setPeople] = useState([]);
-    const [activeTab, setActiveTab] = useState('books'); 
+
+    const handleFilterChange = (e) => {
+        setFilter(e.target.value);
+        const filtered = books.filter(book =>
+            book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            book.code.toLowerCase().includes(e.target.value.toLowerCase())
+        );
+        setFilteredBooks(filtered);
+    };
+    const handleLogout = () => {
+        // Aquí puedes limpiar cualquier dato de sesión si estás usando almacenamiento local o contexto
+        // Ejemplo: localStorage.removeItem('user');
+        // O también puedes usar una función para resetear el estado de autenticación.
+
+        // Redirigir al usuario a la página de inicio de sesión o página principal
+        window.location.href = '/login'; // Redirige a la página de login
+    };
+
    
     const [newBook, setNewBook] = useState({
         title: '',
@@ -71,7 +95,7 @@ const AdminDashboard = () => {
             alert("Error al obtener los libros.");
         }
     };
-
+   
     const fetchPeople = async () => {
         try {
             const fetchedPeople = await peopleService.GetAllPeople();
@@ -172,6 +196,8 @@ const AdminDashboard = () => {
                 address: '',
                 borndate: ''
             });
+            alert('Persona registrado exitosamente');
+      
         } catch (error) {
             console.error("Error adding person:", error.response?.data || error.message);
             alert("Error al agregar la persona.");
@@ -238,16 +264,29 @@ const AdminDashboard = () => {
     return (
         <div className="admin-dashboard">
             <h1>Gestión Administrativa</h1>
-
+            {/* Botón de Cerrar Sesión */}
+            <button onClick={handleLogout} className="logout-button">
+                Cerrar Sesión
+            </button>
            
             <div className="tabs">
                 <button onClick={() => setActiveTab('books')} className={activeTab === 'books' ? 'active' : ''}>Libros</button>
                 <button onClick={() => setActiveTab('people')} className={activeTab === 'people' ? 'active' : ''}>Personas</button>
+                <button onClick={() => setActiveTab('register')} className={activeTab === 'register' ? 'active' : ''}>RegistrarUsuario</button>
             </div>
-
             {activeTab === 'books' && (
                 <div>
                     <h2>Gestión de Libros</h2>
+                    {/* Filtro de libros */}
+                    <input
+                        type="text"
+                        placeholder="Buscar libro por título o código"
+                        value={filter}
+                        onChange={handleFilterChange}
+                        className="filter-input"
+                    />
+
+                    {/* Formulario para agregar un libro */}
                     <form onSubmit={handleAddBook}>
                         <input type="text" placeholder="Título" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })} required />
                         <input type="number" placeholder="ID de Edición" value={newBook.idEdition} onChange={(e) => setNewBook({ ...newBook, idEdition: Number(e.target.value) })} required />
@@ -256,8 +295,10 @@ const AdminDashboard = () => {
                         <button type="submit">Agregar Libro</button>
                     </form>
 
-                    <BookTable books={books} onEdit={openEditModal} onDelete={handleDeleteBook} />
+                    {/* Mostrar tabla de libros */}
+                    <BookTable books={filteredBooks} onEdit={openEditModal} onDelete={handleDeleteBook} />
 
+                    {/* Modal de edición */}
                     {isEditModalOpen && (
                         <div className="modal" style={{ display: 'block' }}>
                             <div className="modal-content">
@@ -314,7 +355,15 @@ const AdminDashboard = () => {
                     )}
                 </div>
             )}
+
+            {activeTab === 'register' && (
+                <div>
+                    <h2>Registrar Usuario</h2>
+                    <LoginForm /> {/* Aquí llamas a tu formulario de registro */}
+                </div>
+            )}
         </div>
+
     );
 };
 
