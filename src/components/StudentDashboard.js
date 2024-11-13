@@ -11,7 +11,7 @@ function StudentDashboard() {
     const [titleFilter, setTitleFilter] = useState('');
     const [dateFilter, setDateFilter] = useState('');
     const [isDarkTheme, setIsDarkTheme] = useState(false);
-    const [activeSection, setActiveSection] = useState('catalogo');
+    const [activeSection, setActiveSection] = useState('inicio');;
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
     const navigate = useNavigate();
@@ -153,17 +153,44 @@ function StudentDashboard() {
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '20px' }}>
                     <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#333' }}>Bienvenido a la Biblioteca Santo Tomás</h2>
 
-                    <p style={{ fontSize: '18px', color: '#666', maxWidth: '600px', lineHeight: '1.6', margin: '10px 0' }}>
-                        En la Biblioteca Santo Tomás, creemos que la lectura es esencial para el desarrollo y crecimiento de los jóvenes. A través de la lectura, se exploran nuevos mundos, se desarrollan valores y se nutre la creatividad. Nuestra misión es fomentar el amor por los libros y la importancia de la lectura en cada visita.
-                    </p>
+                    <section style={{ maxWidth: '800px', textAlign: 'left', margin: '20px 0' }}>
+                        <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#2C3E50' }}>Historia del Colegio</h3>
+                        <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.6' }}>
+                            El Colegio Santo Tomás de Chía tiene una rica historia que se remonta a su fundación en 1970. A lo largo de los años, el colegio ha crecido y evolucionado, manteniéndose fiel a su misión de brindar una educación integral basada en valores cristianos y en el desarrollo personal de cada estudiante.
+                        </p>
+                    </section>
 
-                    <div style={{ fontSize: '16px', fontStyle: 'italic', color: '#333', marginTop: '20px' }}>
+                    <section style={{ maxWidth: '800px', textAlign: 'left', margin: '20px 0' }}>
+                        <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#2C3E50' }}>Misión</h3>
+                        <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.6' }}>
+                            La misión del Colegio Santo Tomás de Chía es formar personas integrales, comprometidas con el desarrollo humano, espiritual, y académico. A través de una educación de alta calidad, el colegio busca inspirar en sus estudiantes el amor por el aprendizaje y la preparación para afrontar los retos de la vida.
+                        </p>
+                    </section>
+
+                    <section style={{ maxWidth: '800px', textAlign: 'left', margin: '20px 0' }}>
+                        <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#2C3E50' }}>Visión</h3>
+                        <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.6' }}>
+                            La visión del colegio es ser un referente de educación en la región, conocido por su enfoque en el desarrollo integral y su compromiso con la formación de ciudadanos éticos y responsables. El Colegio Santo Tomás de Chía se proyecta como una institución que fomenta la innovación educativa y el compromiso con la comunidad.
+                        </p>
+                    </section>
+
+                    <section style={{ maxWidth: '800px', textAlign: 'left', margin: '20px 0' }}>
+                        <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#2C3E50' }}>Valores Institucionales</h3>
+                        <ul style={{ fontSize: '16px', color: '#666', lineHeight: '1.6' }}>
+                            <li><strong>Respeto:</strong> Promover el respeto en todas las interacciones entre estudiantes, docentes y personal, reconociendo la dignidad de cada persona.</li>
+                            <li><strong>Responsabilidad:</strong> Fomentar una cultura de responsabilidad en el cumplimiento de los deberes académicos y en la vida diaria.</li>
+                            <li><strong>Solidaridad:</strong> Incentivar la ayuda mutua y la empatía en toda la comunidad educativa.</li>
+                            <li><strong>Honestidad:</strong> Valorar y practicar la integridad en cada acción y decisión.</li>
+                        </ul>
+                    </section>
+
+                    <div style={{ marginTop: '20px', fontStyle: 'italic', color: '#333' }}>
                         <p>"Un libro es un sueño que puedes sostener en tus manos." – Neil Gaiman</p>
                         <p>"La lectura es para la mente lo que el ejercicio es para el cuerpo." – Joseph Addison</p>
-                        <p>"Cuanto más leas, más cosas sabrás. Cuanto más aprendas, a más lugares irás." – Dr. Seuss</p>
                     </div>
                 </div>
             )}
+
 
             {activeSection === 'grupos' && (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '20px' }}>
@@ -222,7 +249,7 @@ function StudentDashboard() {
 
                     <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2rem', flexWrap: 'wrap' }}>
                         <div style={{ width: '300px', margin: '1rem', textAlign: 'left' }}>
-                           
+
                             <h3 style={{ color: '#34495E', fontSize: '1.5rem', marginTop: '0.5rem' }}>Nuestra Historia</h3>
                             <p style={{ color: '#95A5A6', fontSize: '1rem' }}>
                                 Desde nuestros comienzos, hemos crecido junto con la comunidad, adaptándonos a sus necesidades. Aquí encontrarás cómo evolucionamos y nuestras metas a futuro.
@@ -230,8 +257,8 @@ function StudentDashboard() {
                         </div>
 
                         <div style={{ width: '300px', margin: '1rem', textAlign: 'left' }}>
-                         
-                            
+
+
                             <h3 style={{ color: '#34495E', fontSize: '1.5rem', marginTop: '0.5rem' }}>Nuestros Servicios</h3>
                             <p style={{ color: '#95A5A6', fontSize: '1rem' }}>
                                 Ofrecemos una amplia variedad de servicios, desde préstamos de libros hasta espacios de estudio y talleres educativos. Conoce más sobre cómo te apoyamos en tu aprendizaje.
@@ -239,7 +266,7 @@ function StudentDashboard() {
                         </div>
 
                         <div style={{ width: '300px', margin: '1rem', textAlign: 'left' }}>
-                           
+
                             <h3 style={{ color: '#34495E', fontSize: '1.5rem', marginTop: '0.5rem' }}>Misión y Visión</h3>
                             <p style={{ color: '#95A5A6', fontSize: '1rem' }}>
                                 Inspirar a cada visitante a descubrir y aprender es nuestra misión. Con un futuro orientado hacia la innovación y accesibilidad, buscamos impactar positivamente a todos.
@@ -252,7 +279,7 @@ function StudentDashboard() {
                         <p style={{ color: '#7F8C8D', fontSize: '1.1rem', lineHeight: '1.6' }}>
                             Al visitarnos, te sumerges en un ambiente dedicado al saber. Nuestro espacio no solo ofrece libros, sino también un lugar para reflexionar, investigar y conectarte con otros apasionados por el conocimiento. ¡Esperamos verte pronto!
                         </p>
-                       
+
                     </div>
                 </div>
             )}
@@ -266,7 +293,7 @@ function StudentDashboard() {
                             <p>Nombre: {user.details.firstName}</p>
                             <p>Apellido: {user.details.lastName}</p>
                             <p>Email: {user.details.email}</p>
-                      
+
                         </div>
                     ) : (
                         <p>No se encontró información del usuario.</p>

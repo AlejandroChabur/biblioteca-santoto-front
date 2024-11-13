@@ -12,32 +12,39 @@ function LoginFormSesion() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Realiza la solicitud de inicio de sesión
-            const response = await axios.post('https://www.bibliotecasanttotomas.somee.com/api/User/Login', {
+
+            // Realizar la solicitud de inicio de sesión
+            const response = await axios.post('http://www.bibliotecasanttotomas.somee.com/api/User/Login'
                 email,
                 password
             });
 
-            console.log(response.data);
+            console.log('Respuesta del servidor:', response);
 
-           
+            // Verificar si el inicio de sesión fue exitoso
             if (response.data.message === 'Inicio de sesión exitoso' && response.data.userId) {
-               
+                // Almacenar el userId en localStorage
                 localStorage.setItem('userId', response.data.userId);
 
-               
+                // Comprobar el rol con el valor de la contraseña
                 if (password.startsWith('estudiante')) {
-                    navigate('/student-dashboard');
+                    console.log('Rol identificado como estudiante');
+                    localStorage.setItem('userRole', 'student');
+                    navigate('/student-dashboard');  // Navegar al dashboard de estudiante
                 } else if (password.startsWith('admin')) {
-                    navigate('/admin-dashboard'); 
+                    console.log('Rol identificado como administrador');
+                    localStorage.setItem('userRole', 'admin');
+                    navigate('/admin-dashboard');  // Navegar al dashboard de administrador
                 } else {
-                    setError('Tipo de usuario no reconocido.'); 
+                    setError('Tipo de usuario no reconocido.');
+                    console.log('Error: Tipo de usuario no reconocido.');
                 }
             } else {
-                setError('Credenciales incorrectas.'); 
+                setError('Credenciales incorrectas.');
+                console.log('Error: Credenciales incorrectas.');
             }
         } catch (err) {
-            console.error(err);
+            console.error('Error en la solicitud de inicio de sesión:', err);
             setError('Error en el proceso de inicio de sesión.');
         }
     };
